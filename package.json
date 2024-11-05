@@ -1,0 +1,14 @@
+{
+  "name": "setupproject",
+  "source": "src/home.html",
+  "scripts": {
+    "start": "parcel src/home.html --no-cache",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "@parcel/transformer-css": {
+    "errorRecovery": true
+  }
+}

@@ -1,0 +1,66 @@
+@import url("./common_reset.css") layer(reset);
+@import url("./common_style.css") layer(commonstyle);
+
+@layer home_content {
+  .content__header {
+    height: 60px;
+    padding-inline: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .content__header__searchbar {
+    position: relative;
+  }
+  .content__header__searchbar input {
+    background-color: rgb(244,245,246);
+    border-radius: 10px;
+    height: 40px;
+    outline: 1px solid transparent;
+    border: 1px solid transparent;
+    padding: 20px;
+    cursor: text;
+    min-width: 300px;
+  }
+  .content__header__searchbar input:is(:focus-within, :focus, :hover) {
+    outline: 1px solid transparent;
+    border: 1px solid transparent;
+  }
+  .content__header__searchbar input:focus-within {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.05);
+    & ~ .content__header__searchbar_dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .content__header__searchbar input::placeholder {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+  }
+  .content__header__searchbar_dropdown {
+    position: absolute;
+    transition: opacity 200ms linear, visibility 200ms linear;
+    top: 45px;
+    left: 10px;
+    right: 10px;
+    visibility: hidden;
+    opacity: 0;
+    padding: 15px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+    > div {
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: calc(100vh - 110px);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

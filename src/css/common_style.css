@@ -1,0 +1,117 @@
+@layer common_styles{
+  .big__container {
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+  }
+}
+
+@layer sidebar {
+  .sidebar__container {
+    width: 70px;
+    overflow-x: visible;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    min-height: 100dvh;
+  }
+  .sidebar__content {
+    width: 70px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    position: sticky;
+    top: 0;
+    background-color: rgb(253, 253, 253);
+    transition: all 0.2s linear;
+    border-right: 1px solid rgba(0,0,0,0.05);
+  }
+  .sidebar__content__logo {
+    padding-inline: 15px;
+    padding-block: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    > img {
+      aspect-ratio: 1 / 1;
+      width: 40px;
+    }
+    > span {
+      font-weight: 600;
+      font-size: 18px;
+      display: none;
+    }
+  }
+  .sidebar__content__section {
+    padding-inline: 12px;
+  }
+  .sidebar__content__section__title {
+    font-size: 12px;
+    font-weight: 550;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+  .sidebar__content__section__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sidebar__content__section__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    > div{
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+      color: rgba(0,0,0,0.4);
+    }
+    > span{
+      color: rgba(0,0,0,0.6);
+      font-weight: 600;
+      display: none;
+    }
+  }
+  /* Raise specifility over hover */
+  .sidebar__content__section__item.active.active.active.active {
+    background-color: rgba(0,0,0,0.05);
+    > div{
+      color: #6344ff;
+    }
+    > span{
+      color: black;
+    }
+  }
+  .sidebar__container:hover {
+    .sidebar__content {
+      width: 190px;
+    }
+    .sidebar__content__section__item {
+      width: unset;
+      height: unset;
+      > span{
+        color: rgba(0,0,0,0.6);
+        font-weight: 600;
+        display: inline-block;
+      }
+    }
+    .sidebar__content__section__item:not(.active):hover {
+      background-color: rgba(0,0,0,0.05);
+      > div{
+        color: rgba(0,0,0,0.6);
+      }
+      > span{
+        color: rgba(0,0,0,0.9);
+      }
+    }
+    .sidebar__content__logo {
+      > span {
+        display: inline-block;
+      }
+    }
+  }
+}
